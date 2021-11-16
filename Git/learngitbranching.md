@@ -17,6 +17,10 @@
     - -f 옵션을 통해 브랜치를 특정 커밋에 직접적으로 재지정 할 수 있다.
        - git branch -f main HEAD~3 : (강제로) main 브랜치를 HEAD에서 3번 뒤로 옮긴다. 즉 main 브랜치에서 가리키고 있던 커밋을 HEAD에서 3번 전 커밋을 가리키도록 한다.
        - 아래서 c4를 가리키고 있던 main이 c1으로 옮겨짐을 확인할 수 있다.
+       - 해당 위치에 새로운 브랜치 이름을 작성하는 것도 가능하다.
+       - HEAD~ : 1칸 올리기, HEAD~x : x번 올리기, HEAD^2 : 부모 브랜치 중 2번째 부모 선택
+       - HEAD~^2~2 : 현재 head에서 위로 1칸, 2번째 부모 선택 후 위로 2칸인 커밋 선택하기
+       - git branch -f main C3 : main을 C3를 가리키도록 변경
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/62360009/141611204-428ac1ce-9975-4ac3-96b5-aefd924c7329.png"> </center>
@@ -43,3 +47,6 @@
    - git rebase -i HEAD~2: 현 위치 포함 두 개를, 두 개 위만큼을 base로 새로운 branch를 형성한다.
    - git cherry-pick: 현 위치에서 원하는 노드를 순서대로 붙여 새로운 branch를 만든다.
    - git commit --amend : 현 위치의 커밋을 메시지, 내용 수정해서 복사된 커밋을 만들 수 있다.
+   - git push origin main : main(로컬)에 있는 커밋(원격에 반영 안된)을 origin(원격) main 브랜치로 가서 push 한다. 현재 HEAD위치에 상관 없이 push가 발생한다.
+   - git fetch origin main : main(로컬)로 origin(원격) 내용을 fetch 한다.
+   - git fetch origin source:destination : origin(원격)의 source에 있는 커밋을 local의 destination branch
